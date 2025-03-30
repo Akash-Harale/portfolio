@@ -37,7 +37,7 @@ export default function About() {
             <div className="absolute inset-0 border-2 border-indigo-500 dark:border-indigo-400 rounded-lg transform translate-x-4 translate-y-4"></div>
             <div className="relative overflow-hidden rounded-lg">
               <Image
-                src="./images/my-photo.jpeg"
+                src={"./images/my-photo.jpeg"}
                 alt="Akash Harale portrait"
                 width={500}
                 height={500}
