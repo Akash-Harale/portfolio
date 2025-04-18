@@ -82,7 +82,7 @@ export default function About() {
               </div>
             </div>
             <Button className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600" asChild>
-              <a href="/resume.pdf" download>
+              <a href="/resume.pdf" download="Akash_Harale_Resume.pdf">
                 <Download className="w-4 h-4 mr-2" /> Download Resume
               </a>
             </Button>
@@ -92,4 +92,3 @@ export default function About() {
     </section>
   )
 }
-
