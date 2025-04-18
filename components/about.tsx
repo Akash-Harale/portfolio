@@ -70,11 +70,11 @@ export default function About() {
               </div>
               <div>
                 <h4 className="font-semibold">Email:</h4>
-                <p className="text-muted-foreground">akash@example.com</p>
+                <p className="text-muted-foreground">akash.v.harale@gmail.com</p>
               </div>
               <div>
                 <h4 className="font-semibold">Location:</h4>
-                <p className="text-muted-foreground">San Francisco, CA</p>
+                <p className="text-muted-foreground">Nanded, Maharashtra</p>
               </div>
               <div>
                 <h4 className="font-semibold">Availability:</h4>
