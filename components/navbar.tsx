@@ -112,7 +112,7 @@ export default function Navbar() {
               className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
               asChild
             >
-              <a href="/resume.pdf" download="Akash_Harale_Resume.pdf">
+              <a href="/Akash_Harale_Resume.pdf" download="Akash_Harale_Resume.pdf">
                 Resume
               </a>
             </Button>
@@ -184,7 +184,7 @@ export default function Navbar() {
                 ))}
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button className="mt-4 bg-white text-indigo-700 hover:bg-indigo-100" asChild>
-                    <a href="/resume.pdf" download="Akash_Harale_Resume.pdf">
+                    <a href="/Akash_Harale_Resume.pdf" download="Akash_Harale_Resume.pdf">
                       Resume
                     </a>
                   </Button>
