@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ExternalLink, Github } from "lucide-react";
+import { Github } from "lucide-react";
 
 export default function Projects() {
   const { ref, inView } = useInView({
@@ -15,40 +15,46 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description:
-        "A full-featured e-commerce platform with product catalog, shopping cart, user authentication, and payment integration.",
-      image: "/images/e-commerce-1.jpeg",
+      title: "Jwellery Store",
+      description:" A full-stack e-commerce application for buying and selling jewelry, featuring user authentication, product management, and payment processing.",
+      image: "/images/jwellery.png",
       tags: ["React", "Node.js", "Express", "MongoDB", "Redux", "Stripe"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      liveUrl: "https://akash-harale-jwellery-website.netlify.app/",
+      githubUrl: "https://github.com/Akash-Harale/Tanika-Tech-React-App",
     },
     {
       title: "Task Management App",
       description:
         "A collaborative task management application with real-time updates, task assignment, and progress tracking.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Next.js", "Express", "MongoDB", "Socket.io", "Tailwind CSS"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      image: "/images/task-manager.jpg",
+      tags: [
+        "Next.js",
+        "React.js",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Tailwind CSS",
+      ],
+      // liveUrl: "https://example.com",
+      githubUrl: "https://github.com/Akash-Harale/Task-Manager",
     },
     {
-      title: "Social Media Dashboard",
+      title: "URL Shortener",
       description:
-        "A comprehensive dashboard for social media analytics with data visualization and reporting features.",
-      image: "/placeholder.svg?height=400&width=600",
+        "A simple URL shortening service that allows users to shorten long URLs and track click statistics.",
+      image: "/images/url-shortner.png",
       tags: ["React", "Node.js", "D3.js", "MongoDB", "Material UI"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+      // liveUrl: "https://example.com",
+      githubUrl: "https://github.com/Akash-Harale/Backend-of-URL-Shortner",
     },
     {
-      title: "Real Estate Listing Platform",
+      title: "Flutter Roll Dice App",
       description:
-        "A property listing platform with search, filtering, and map integration for real estate listings.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["React", "Express", "MongoDB", "Google Maps API", "AWS S3"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+        " A simple Flutter app that simulates rolling dice with animations and sound effects.",
+      image: "/images/roll-dice.jpg",
+      tags: ["FLutter", "Dart", "Animation"],
+      // liveUrl: "https://example.com",
+      githubUrl: "https://github.com/Akash-Harale/flutter_roll_dice_app",
     },
   ];
 
@@ -127,7 +133,7 @@ export default function Projects() {
                         <Github className="w-4 h-4 mr-2" /> Code
                       </a>
                     </Button>
-                    <Button
+                    {/* <Button
                       size="sm"
                       className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
                       asChild
@@ -139,7 +145,7 @@ export default function Projects() {
                       >
                         <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
                       </a>
-                    </Button>
+                    </Button> */}
                   </div>
                 </CardContent>
               </Card>
@@ -155,7 +161,7 @@ export default function Projects() {
             asChild
           >
             <a
-              href="https://github.com"
+              href="https://github.com/Akash-Harale"
               target="_blank"
               rel="noopener noreferrer"
             >

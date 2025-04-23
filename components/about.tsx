@@ -1,19 +1,23 @@
-"use client"
+"use client";
 
-import { useInView } from "react-intersection-observer"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Download } from "lucide-react"
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 export default function About() {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   return (
-    <section id="about" ref={ref} className="py-20 bg-muted/30 dark:bg-slate-900/50">
+    <section
+      id="about"
+      ref={ref}
+      className="py-20 bg-muted/30 dark:bg-slate-900/50"
+    >
       <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center mb-12 text-center">
           <motion.h2
@@ -51,16 +55,22 @@ export default function About() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <h3 className="mb-4 text-2xl font-bold">Full Stack Developer & Technology Enthusiast</h3>
+            <h3 className="mb-4 text-2xl font-bold">
+              Full Stack Developer & Technology Enthusiast
+            </h3>
             <p className="mb-6 text-muted-foreground">
-              I&apos;m Akash Harale, a passionate developer with expertise across multiple technologies. With 5+ years of
-              experience, I specialize in building scalable and performant applications that deliver exceptional user
-              experiences across web and mobile platforms.
+              I&apos;m Akash Harale, a passionate developer with expertise
+              across multiple technologies. With One years of experience, I
+              specialize in building scalable and performant applications that
+              deliver exceptional user experiences across web and mobile
+              platforms.
             </p>
             <p className="mb-6 text-muted-foreground">
-              My journey in development began during college, where I discovered my passion for creating digital
-              solutions. Since then, I&apos;ve worked with startups and established companies to bring their visions to life
-              through clean code and intuitive design. My diverse skill set includes web development, mobile app
+              My journey in development began during college, where I discovered
+              my passion for creating digital solutions. Since then, I&apos;ve
+              worked with startups and established companies to bring their
+              visions to life through clean code and intuitive design. My
+              diverse skill set includes web development, mobile app
               development, and cybersecurity fundamentals.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -70,7 +80,9 @@ export default function About() {
               </div>
               <div>
                 <h4 className="font-semibold">Email:</h4>
-                <p className="text-muted-foreground">akash.v.harale@gmail.com</p>
+                <p className="text-muted-foreground">
+                  akash.v.harale@gmail.com
+                </p>
               </div>
               <div>
                 <h4 className="font-semibold">Location:</h4>
@@ -81,7 +93,10 @@ export default function About() {
                 <p className="text-muted-foreground">Full-time</p>
               </div>
             </div>
-            <Button className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600" asChild>
+            <Button
+              className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+              asChild
+            >
               <a href="/resume.pdf" download="Akash_Harale_Resume.pdf">
                 <Download className="w-4 h-4 mr-2" /> Download Resume
               </a>
@@ -90,5 +105,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }
