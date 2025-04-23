@@ -1,21 +1,24 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react"
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
   return (
-    <section id="home" className="relative flex items-center justify-center min-h-screen pt-16 overflow-hidden">
+    <section
+      id="home"
+      className="relative flex items-center justify-center min-h-screen pt-16 overflow-hidden"
+    >
       <div className="absolute inset-0 z-0 opacity-20 overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/30 rounded-full mix-blend-multiply filter blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/30 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -30,13 +33,17 @@ export default function Hero() {
         >
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
             <span className="block">
-              Hi, I&apos;m <span className="text-indigo-600 dark:text-indigo-400">Akash Harale</span>
+              Hi, I&apos;m{" "}
+              <span className="text-indigo-600 dark:text-indigo-400">
+                Akash Harale
+              </span>
             </span>
             <span className="block mt-2">Full Stack Developer</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-            I craft responsive and performant web applications using modern technologies. Specializing in full-stack
-            development with expertise in multiple frameworks and platforms.
+            I craft responsive and performant web applications using modern
+            technologies. Specializing in full-stack development with expertise
+            in multiple frameworks and platforms.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
             <Button
@@ -44,7 +51,7 @@ export default function Hero() {
               className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
               asChild
             >
-              <a href="#projects">View My Work</a>
+              <a href="#skills">View My Skills</a>
             </Button>
             <Button
               size="lg"
@@ -58,7 +65,7 @@ export default function Hero() {
 
           <div className="flex items-center justify-center gap-6 mt-12">
             <a
-              href="https://github.com"
+              href="https://github.com/Akash-Harale"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
@@ -67,7 +74,7 @@ export default function Hero() {
               <span className="sr-only">GitHub</span>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/akash-v-harale/"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
@@ -76,7 +83,7 @@ export default function Hero() {
               <span className="sr-only">LinkedIn</span>
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/akash_v_harale"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
@@ -85,7 +92,7 @@ export default function Hero() {
               <span className="sr-only">Twitter</span>
             </a>
             <a
-              href="mailto:akash@example.com"
+              href="mailto:akash.v.harale@gmail.com"
               className="transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
             >
               <Mail className="w-6 h-6" />
@@ -96,12 +103,14 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="text-muted-foreground hover:text-indigo-600 dark:hover:text-indigo-400">
+        <a
+          href="#about"
+          className="text-muted-foreground hover:text-indigo-600 dark:hover:text-indigo-400"
+        >
           <ArrowDown className="w-6 h-6" />
           <span className="sr-only">Scroll Down</span>
         </a>
       </div>
     </section>
-  )
+  );
 }
-

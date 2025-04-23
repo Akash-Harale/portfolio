@@ -1,50 +1,52 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useInView } from "react-intersection-observer"
-import { motion } from "framer-motion"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { MapPin, Mail, Phone, Send, Loader2 } from "lucide-react"
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { MapPin, Mail, Phone, Send, Loader2 } from "lucide-react";
 
 export default function Contact() {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitted(true)
-      setFormData({ name: "", email: "", subject: "", message: "" })
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
 
       // Reset success message after 5 seconds
-      setTimeout(() => setSubmitted(false), 5000)
-    }, 1500)
-  }
+      setTimeout(() => setSubmitted(false), 5000);
+    }, 1500);
+  };
 
   const contactInfo = [
     {
@@ -62,7 +64,7 @@ export default function Contact() {
       title: "Phone",
       details: "+91 7822946693",
     },
-  ]
+  ];
 
   return (
     <section id="contact" ref={ref} className="py-20 dark:bg-slate-950">
@@ -83,8 +85,9 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-lg text-muted-foreground max-w-2xl"
           >
-            Have a project in mind that requires a versatile developer? Whether it is web, mobile, or something in
-            between, I would love to hear about it. Feel free to reach out!
+            Have a project in mind that requires a versatile developer? Whether
+            it is web, mobile, or something in between, I would love to hear
+            about it. Feel free to reach out!
           </motion.p>
         </div>
 
@@ -111,7 +114,8 @@ export default function Contact() {
               <h3 className="mb-4 text-lg font-semibold">Follow Me</h3>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  target="_blank"
+                  href="https://github.com/Akash-Harale"
                   className="p-3 transition-colors rounded-full bg-muted hover:bg-indigo-100 hover:text-indigo-600 dark:hover:bg-indigo-900/30 dark:hover:text-indigo-300"
                 >
                   <svg
@@ -132,7 +136,8 @@ export default function Contact() {
                   <span className="sr-only">GitHub</span>
                 </a>
                 <a
-                  href="#"
+                  target="_blank"
+                  href="https://www.linkedin.com/in/akash-v-harale/"
                   className="p-3 transition-colors rounded-full bg-muted hover:bg-indigo-100 hover:text-indigo-600 dark:hover:bg-indigo-900/30 dark:hover:text-indigo-300"
                 >
                   <svg
@@ -154,7 +159,8 @@ export default function Contact() {
                   <span className="sr-only">LinkedIn</span>
                 </a>
                 <a
-                  href="#"
+                  target="_blank"
+                  href="https://x.com/akash_v_harale"
                   className="p-3 transition-colors rounded-full bg-muted hover:bg-indigo-100 hover:text-indigo-600 dark:hover:bg-indigo-900/30 dark:hover:text-indigo-300"
                 >
                   <svg
@@ -173,7 +179,6 @@ export default function Contact() {
                   </svg>
                   <span className="sr-only">Twitter</span>
                 </a>
-               
               </div>
             </div>
           </motion.div>
@@ -275,6 +280,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
