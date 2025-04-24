@@ -33,19 +33,53 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch(
+        "https://portfolio-backend-rose-phi.vercel.app/recruiter/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!response.ok) {
+        // handle non-200 responses
+        const errorData = await response.json();
+        throw new Error(
+          errorData.message ||
+            "Something went wrong while sending your message."
+        );
+      }
+
       setSubmitted(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
 
-      // Reset success message after 5 seconds
+      // clear success message after 5 seconds
       setTimeout(() => setSubmitted(false), 5000);
-    }, 1500);
+    } catch (error) {
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage("An unexpected error occurred. Please try again.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -274,6 +308,11 @@ export default function Contact() {
                     </>
                   )}
                 </Button>
+              )}
+              {errorMessage && (
+                <div className="p-4 text-sm text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20 rounded-md">
+                  {errorMessage}
+                </div>
               )}
             </form>
           </motion.div>
