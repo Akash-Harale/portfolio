@@ -36,7 +36,7 @@ export default function Projects() {
         "Tailwind CSS",
       ],
       // liveUrl: "https://example.com",
-      githubUrl: "https://github.com/Akash-Harale/Task-Manager",
+      githubUrl: "https://github.com/Akash-Harale/todo",
     },
     {
       title: "URL Shortener",
