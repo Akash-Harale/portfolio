@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Github } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 export default function Projects() {
   const { ref, inView } = useInView({
@@ -15,8 +15,18 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "Relaxing Touch Massage",
+      description:
+        "A beautifully designed website for booking professional massage services, featuring an intuitive service selection, appointment scheduling, user authentication, and a smooth, relaxing user experience.",
+      image: "/images/body-massage.png",
+      tags: ["React", "Node.js", "Express", "MongoDB", "Redux", "Stripe"],
+      liveUrl: "https://spa-three-amber.vercel.app/",
+      githubUrl: "https://github.com/Akash-Harale/spa",
+    },
+    {
       title: "Jwellery Store",
-      description:" A full-stack e-commerce application for buying and selling jewelry, featuring user authentication, product management, and payment processing.",
+      description:
+        " A full-stack e-commerce application for buying and selling jewelry, featuring user authentication, product management, and payment processing.",
       image: "/images/jwellery.png",
       tags: ["React", "Node.js", "Express", "MongoDB", "Redux", "Stripe"],
       liveUrl: "https://akash-harale-jwellery-website.netlify.app/",
@@ -133,7 +143,7 @@ export default function Projects() {
                         <Github className="w-4 h-4 mr-2" /> Code
                       </a>
                     </Button>
-                    {/* <Button
+                    <Button
                       size="sm"
                       className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
                       asChild
@@ -145,7 +155,7 @@ export default function Projects() {
                       >
                         <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
                       </a>
-                    </Button> */}
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
