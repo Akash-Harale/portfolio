@@ -97,7 +97,11 @@ export default function About() {
               className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
               asChild
             >
-              <a href="/Akash_Harale_Resume.pdf" download="Akash_Harale_Resume.pdf">
+              <a
+                href="/Akash_Harale_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Download className="w-4 h-4 mr-2" /> Download Resume
               </a>
             </Button>
