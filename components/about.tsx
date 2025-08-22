@@ -58,21 +58,34 @@ export default function About() {
             <h3 className="mb-4 text-2xl font-bold">
               Full Stack Developer & Technology Enthusiast
             </h3>
-            <p className="mb-6 text-muted-foreground">
+            <p className="mb-6 text-muted-foreground text-justify">
               I&apos;m Akash Harale, a passionate developer with expertise
-              across multiple technologies. With One years of experience, I
-              specialize in building scalable and performant applications that
-              deliver exceptional user experiences across web and mobile
-              platforms.
+              across multiple technologies. With <span className="font-bold text-red-500" >1.8 years</span> of
+              experience, I specialize in building scalable and performant
+              applications that deliver exceptional user experiences across web
+              and mobile platforms.
             </p>
-            <p className="mb-6 text-muted-foreground">
+            <p className="mb-6 text-muted-foreground text-justify">
               My journey in development began during college, where I discovered
-              my passion for creating digital solutions. Since then, I&apos;ve
+              my passion for creating digital solutions. Since then, I &apos;ve
               worked with startups and established companies to bring their
               visions to life through clean code and intuitive design. My
               diverse skill set includes web development, mobile app
               development, and cybersecurity fundamentals.
             </p>
+            <p className="mb-6 text-muted-foreground">
+              <span className="font-semibold">Experiences:</span> I have
+              contributed to projects ranging from{" "}
+              <span className="italic">e-commerce platforms</span>,
+              <span className="italic"> training management systems</span>, and
+              <span className="italic"> logistics applications</span> to
+              <span className="italic"> online IT course platforms</span> like
+              Flair Technologies. My work includes implementing secure
+              authentication flows, integrating payment gateways, designing
+              responsive UIs with Tailwind CSS, and optimizing applications for
+              performance and scalability.
+            </p>
+
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div>
                 <h4 className="font-semibold">Name:</h4>
@@ -86,7 +99,7 @@ export default function About() {
               </div>
               <div>
                 <h4 className="font-semibold">Location:</h4>
-                <p className="text-muted-foreground">Nanded, Maharashtra</p>
+                <p className="text-muted-foreground">Bangalore, Karnataka</p>
               </div>
               <div>
                 <h4 className="font-semibold">Availability:</h4>

@@ -15,25 +15,66 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "Logitrack - Logistic Web App",
+      description:
+        "A robust logistics management platform designed to streamline shipment tracking, fleet management, and delivery operations. Features include real-time tracking, order management, route optimization, analytics dashboard, and role-based access for admins, drivers, and clients.",
+      image: "/images/logistic.jpg",
+      tags: [
+        "React",
+        "Typescript",
+        "Javascript",
+        "Next.js",
+        "Redux",
+        "Tailwind CSS",
+      ],
+      liveUrl: "https://logistic-two-pink.vercel.app/",
+      githubUrl: "https://github.com/Akash-Harale/logistic",
+    },
+    {
+      title: "Training Management System",
+      description:
+        "A comprehensive platform for managing corporate and educational training programs, featuring course creation, trainee enrollment, progress tracking, role-based access control, and secure payment integration for premium courses.",
+      image: "/images/gamp.jpg",
+      tags: ["React", "Node.js", "Express", "Redux"],
+      note: "Client project (Admin side) - GitHub and live link not publicly available",
+    },
+    {
+      title: "Flair Technologies - Online IT Courses",
+      description:
+        "An interactive e-learning platform by Flair Technologies offering a wide range of IT courses. Features include course browsing, video-based learning, expert instructor profiles, student progress tracking, certification, secure payments, and a seamless learning experience across devices.",
+      image: "/images/flair.jpg",
+      tags: [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "MongoDB",
+      ],
+      liveUrl: "https://flair-technologies-bice.vercel.app/",
+      githubUrl: "https://github.com/Akash-Harale/flair-technologies",
+    },
+    {
+      title: "Shop Now : E-Commerce Promotional Website",
+      description:
+        "A modern promotional website designed to showcase products, highlight seasonal offers, and drive customer engagement. Features include dynamic product showcases, promotional banners, responsive design, smooth animations, and integrated call-to-action sections for boosting sales conversions.",
+      image: "/images/ecommerce.jpg",
+      tags: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+      liveUrl: "https://ecommerce-promotion.vercel.app/",
+      githubUrl: "https://github.com/Akash-Harale/ecommerce-promotion",
+    },
+    {
       title: "Relaxing Touch Massage",
       description:
         "A beautifully designed website for booking professional massage services, featuring an intuitive service selection, appointment scheduling, user authentication, and a smooth, relaxing user experience.",
       image: "/images/body-massage.png",
       tags: ["React", "Node.js", "Express", "MongoDB", "Redux", "Stripe"],
-      liveUrl: "https://spa-three-amber.vercel.app/",
+      liveUrl: "https://spa-pink-theta.vercel.app/",
       githubUrl: "https://github.com/Akash-Harale/spa",
     },
+
     {
-      title: "Jwellery Store",
-      description:
-        " A full-stack e-commerce application for buying and selling jewelry, featuring user authentication, product management, and payment processing.",
-      image: "/images/jwellery.png",
-      tags: ["React", "Node.js", "Express", "MongoDB", "Redux", "Stripe"],
-      liveUrl: "https://akash-harale-jwellery-website.netlify.app/",
-      githubUrl: "https://github.com/Akash-Harale/Tanika-Tech-React-App",
-    },
-    {
-      title: "Task Management App",
+      title: "Task Management App - Backend",
       description:
         "A collaborative task management application with real-time updates, task assignment, and progress tracking.",
       image: "/images/task-manager.jpg",
@@ -45,25 +86,22 @@ export default function Projects() {
         "MongoDB",
         "Tailwind CSS",
       ],
-      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/Akash-Harale/todo",
     },
     {
-      title: "URL Shortener",
+      title: "URL Shortener - Backend",
       description:
         "A simple URL shortening service that allows users to shorten long URLs and track click statistics.",
       image: "/images/url-shortner.png",
-      tags: ["React", "Node.js", "D3.js", "MongoDB", "Material UI"],
-      // liveUrl: "https://example.com",
+      tags: ["React", "Node.js", "MongoDB", "Material UI"],
       githubUrl: "https://github.com/Akash-Harale/Backend-of-URL-Shortner",
     },
     {
-      title: "Flutter Roll Dice App",
+      title: "Roll Dice App - Android Application ( Flutter )",
       description:
         " A simple Flutter app that simulates rolling dice with animations and sound effects.",
       image: "/images/roll-dice.jpg",
       tags: ["FLutter", "Dart", "Animation"],
-      // liveUrl: "https://example.com",
       githubUrl: "https://github.com/Akash-Harale/flutter_roll_dice_app",
     },
   ];
@@ -105,7 +143,7 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: 0.1 * index }}
             >
               <Card className="overflow-hidden h-full dark:bg-slate-800/50 dark:border-slate-700">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-80 overflow-hidden">
                   <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
@@ -129,33 +167,42 @@ export default function Projects() {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-950/50"
-                      asChild
-                    >
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    {project.githubUrl && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-950/50"
+                        asChild
                       >
-                        <Github className="w-4 h-4 mr-2" /> Code
-                      </a>
-                    </Button>
-                    <Button
-                      size="sm"
-                      className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
-                      asChild
-                    >
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="w-4 h-4 mr-2" /> Code
+                        </a>
+                      </Button>
+                    )}
+                    {project.liveUrl && (
+                      <Button
+                        size="sm"
+                        className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+                        asChild
                       >
-                        <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
-                      </a>
-                    </Button>
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
+                        </a>
+                      </Button>
+                    )}
+                    {!project.githubUrl && !project.liveUrl && project.note && (
+                      <p className="text-sm bg-indigo-100 dark:bg-indigo-600 px-5">
+                        {project.note}
+                      </p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
