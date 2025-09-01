@@ -60,7 +60,7 @@ export default function About() {
             </h3>
             <p className="mb-6 text-muted-foreground text-justify">
               I&apos;m Akash Harale, a passionate developer with expertise
-              across multiple technologies. With <span className="font-bold text-red-500" >1.8 years</span> of
+              across multiple technologies. With <span className="font-bold text-red-500" >2.4 years</span> of
               experience, I specialize in building scalable and performant
               applications that deliver exceptional user experiences across web
               and mobile platforms.
