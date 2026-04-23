@@ -6,10 +6,12 @@ import Projects from "@/components/projects"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import GridBackground from "@/components/grid-background"
+import CustomCursor from "@/components/custom-cursor"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background dark:bg-slate-950 relative overflow-hidden">
+    <main className="min-h-screen bg-background dark:bg-slate-950 relative overflow-hidden font-sans">
+      <CustomCursor />
       <GridBackground />
       <Navbar />
       <Hero />

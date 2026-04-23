@@ -86,7 +86,7 @@ export default function Contact() {
     {
       icon: <MapPin className="w-5 h-5" />,
       title: "Location",
-      details: "Nanded, Maharashtra",
+      details: "Delhi, India",
     },
     {
       icon: <Mail className="w-5 h-5" />,
@@ -101,27 +101,25 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" ref={ref} className="py-20 dark:bg-slate-950">
-      <div className="container px-4 mx-auto">
-        <div className="flex flex-col items-center mb-12 text-center">
+    <section id="contact" ref={ref} className="py-24 relative overflow-hidden">
+      <div className="container px-4 mx-auto relative z-10">
+        <div className="flex flex-col items-center mb-16 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-4xl font-bold tracking-tight sm:text-5xl font-display"
           >
-            Get In Touch
+            Get In <span className="text-gradient">Touch</span>
           </motion.h2>
-          <div className="w-20 h-1 mt-2 bg-indigo-500 dark:bg-indigo-400 rounded-full"></div>
+          <div className="w-24 h-1.5 mt-4 bg-indigo-500 rounded-full"></div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 text-lg text-muted-foreground max-w-2xl"
+            className="mt-6 text-lg text-muted-foreground max-w-2xl"
           >
-            Have a project in mind that requires a versatile developer? Whether
-            it is web, mobile, or something in between, I would love to hear
-            about it. Feel free to reach out!
+            Have a project in mind or want to discuss a potential collaboration? I&apos;m always open to new opportunities and interesting projects.
           </motion.p>
         </div>
 

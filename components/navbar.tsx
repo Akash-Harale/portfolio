@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Menu, X, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,215 +14,129 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 50);
 
-      // Determine active section based on scroll position
       const sections = ["home", "about", "skills", "projects", "contact"];
-      const currentPosition = window.scrollY + 200; // Offset for better UX
-
-      for (const section of sections) {
+      const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
-          const { top, bottom } = element.getBoundingClientRect();
-          const offset = window.scrollY + top;
-
-          if (
-            currentPosition >= offset &&
-            currentPosition < window.scrollY + bottom
-          ) {
-            setActiveSection(section);
-            break;
-          }
+          const rect = element.getBoundingClientRect();
+          return rect.top >= -100 && rect.top <= 300;
         }
-      }
+        return false;
+      });
+      if (current) setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    // Prevent scrolling when menu is open
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
-  const scrollToSection = (sectionId: string) => {
-    setIsOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Add offset for fixed header
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { name: "Home", href: "home" },
-    { name: "About", href: "about" },
-    { name: "Skills", href: "skills" },
-    { name: "Projects", href: "projects" },
-    { name: "Contact", href: "contact" },
+    { name: "Home", href: "#home", id: "home" },
+    { name: "About", href: "#about", id: "about" },
+    { name: "Skills", href: "#skills", id: "skills" },
+    { name: "Projects", href: "#projects", id: "projects" },
+    { name: "Contact", href: "#contact", id: "contact" },
   ];
 
   return (
-    <>
-      <header
-        className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-300",
-          scrolled
-            ? "bg-background/80 backdrop-blur-md shadow-sm"
-            : "bg-transparent"
-        )}
-      >
-        <div className="container flex items-center justify-between h-16 px-4 mx-auto md:px-8">
-          <button
-            onClick={() => scrollToSection("home")}
-            className="text-xl font-bold tracking-tight text-indigo-600 dark:text-indigo-400"
-          >
-            Akash{" "}
-            <span className="text-indigo-500 dark:text-indigo-300">Harale</span>
-          </button>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "py-3 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-indigo-500/10 shadow-lg shadow-indigo-500/5"
+          : "py-6 bg-transparent"
+      }`}
+    >
+      <div className="container px-4 mx-auto">
+        <div className="flex items-center justify-between">
+          <Link href="#home" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Rocket className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xl font-bold tracking-tight font-display group-hover:text-indigo-600 transition-colors">
+              Akash <span className="text-indigo-600">Harale</span>
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:items-center md:gap-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 relative",
-                  activeSection === link.href
-                    ? "text-indigo-600 dark:text-indigo-400"
-                    : ""
-                )}
-              >
-                {link.name}
-                {activeSection === link.href && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 dark:bg-indigo-400 rounded-full" />
-                )}
-              </button>
-            ))}
+          <div className="hidden md:flex items-center gap-8">
+            <div className="flex items-center gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="relative text-sm font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400"
+                >
+                  {link.name}
+                  {activeSection === link.id && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-indigo-600 rounded-full"
+                    />
+                  )}
+                </Link>
+              ))}
+            </div>
+            <div className="h-6 w-px bg-slate-200 dark:bg-slate-800"></div>
             <ThemeToggle />
             <Button
-              size="sm"
-              className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+              className="rounded-full text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 px-6"
               asChild
             >
-              <a
-                href="/Akash_Harale_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Resume
-              </a>
-            </Button>
-          </nav>
-
-          {/* Mobile Navigation Toggle */}
-          <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? (
-                <X className="w-5 h-5" />
-              ) : (
-                <Menu className="w-5 h-5" />
-              )}
-              <span className="sr-only">Toggle menu</span>
+              <a href="#contact">Hire Me</a>
             </Button>
           </div>
-        </div>
-      </header>
 
-      {/* Mobile Navigation Menu */}
+          {/* Mobile Menu Toggle */}
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-muted-foreground hover:text-indigo-600 transition-colors"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] flex md:hidden bg-black/60 backdrop-blur-sm overflow-hidden"
-            style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass border-t border-indigo-500/10 overflow-hidden"
           >
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="absolute inset-y-0 right-0 w-full max-w-sm bg-gradient-to-br from-indigo-900 to-indigo-700 shadow-xl overflow-hidden"
-            >
-              <div className="flex justify-end p-4">
-                <Button
-                  variant="ghost"
-                  size="icon"
+            <div className="container px-4 py-8 flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:bg-indigo-800/50"
+                  className={`text-lg font-medium transition-colors ${
+                    activeSection === link.id
+                      ? "text-indigo-600"
+                      : "hover:text-indigo-600"
+                  }`}
                 >
-                  <X className="w-6 h-6" />
-                  <span className="sr-only">Close menu</span>
-                </Button>
-              </div>
-
-              <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
-                <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
-                <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
-              </div>
-
-              <nav className="relative flex flex-col items-center justify-center h-[80vh] gap-8">
-                {navLinks.map((link) => (
-                  <motion.button
-                    key={link.name}
-                    onClick={() => scrollToSection(link.href)}
-                    className={cn(
-                      "text-xl font-medium transition-colors text-white hover:text-indigo-200 relative",
-                      activeSection === link.href ? "text-indigo-200" : ""
-                    )}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {link.name}
-                    {activeSection === link.href && (
-                      <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-indigo-300 rounded-full" />
-                    )}
-                  </motion.button>
-                ))}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Button
-                    className="mt-4 bg-white text-indigo-700 hover:bg-indigo-100"
-                    asChild
-                  >
-                    <a
-                      href="/Akash_Harale_Resume.pdf"
-                      download="Akash_Harale_Resume.pdf"
-                    >
-                      Resume
-                    </a>
-                  </Button>
-                </motion.div>
-              </nav>
-            </motion.div>
+                  {link.name}
+                </Link>
+              ))}
+              <Button
+                className="rounded-full bg-indigo-600 w-full"
+                asChild
+              >
+                <a href="#contact" onClick={() => setIsOpen(false)}>
+                  Hire Me
+                </a>
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </nav>
   );
 }

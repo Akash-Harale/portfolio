@@ -4,8 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ExternalLink, Github } from "lucide-react";
+import { Github, ArrowRight } from "lucide-react";
 
 export default function Projects() {
   const { ref, inView } = useInView({
@@ -15,217 +14,185 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Logitrack - Logistic Web App",
+      title: "Vehicle Location Tracking System (VLTS)",
+      category: "Fleet Management",
       description:
-        "A robust logistics management platform designed to streamline shipment tracking, fleet management, and delivery operations. Features include real-time tracking, order management, route optimization, analytics dashboard, and role-based access for admins, drivers, and clients.",
-      image: "/images/logistic.jpg",
-      tags: [
-        "React",
-        "Typescript",
-        "Javascript",
-        "Next.js",
-        "Redux",
-        "Tailwind CSS",
-      ],
-      liveUrl: "https://logistic-two-pink.vercel.app/",
-      githubUrl: "https://github.com/Akash-Harale/logistic",
+        "A real-time vehicle monitoring platform built for enterprise fleet operations. Features live GPS tracking via WebSockets, interactive maps with trip history, and role-based analytics dashboards for monitoring fleet activity and driver behavior.",
+      image: "/images/vlts1.gif",
+      tags: ["React", "Node.js", "WebSockets", "Google Maps API", "Docker", "MongoDB"],
+      liveUrl: "https://vlts.nutanteksolutions.cloud/",
+      githubUrl: "",
+      featured: true,
     },
     {
-      title: "Training Management System",
+      title: "Freechats - Messaging Platform",
+      category: "Communication",
       description:
-        "A comprehensive platform for managing corporate and educational training programs, featuring course creation, trainee enrollment, progress tracking, role-based access control, and secure payment integration for premium courses.",
+        "A secure instant messaging web app featuring verified user connections and integrated payment gateways for premium features. Built with verified connection protocols to ensure secure and trusted user interactions.",
+      image: "/images/freechats.gif",
+      tags: ["React", "Node.js", "MongoDB", "JWT", "Docker", "Tailwind CSS"],
+      githubUrl: "",
+      featured: true,
+    },
+    {
+      title: "ProcureX - RFQ Management",
+      category: "Enterprise Software",
+      description:
+        "A scalable procurement management system that streamlines vendor-buyer interactions. Features dynamic form handling with real-time validations using TypeScript and Supabase for secure authentication.",
       image: "/images/gamp.jpg",
-      tags: ["React", "Node.js", "Express", "Redux"],
-      note: "Client project (Admin side) - GitHub and live link not publicly available",
+      tags: ["React", "TypeScript", "Supabase", "ShadCN", "Tailwind CSS"],
+      githubUrl: "",
+      featured: true,
     },
     {
-      title: "Flair Technologies - Online IT Courses",
+      title: "MCQ Quiz App",
+      category: "Mobile Development",
       description:
-        "An interactive e-learning platform by Flair Technologies offering a wide range of IT courses. Features include course browsing, video-based learning, expert instructor profiles, student progress tracking, certification, secure payments, and a seamless learning experience across devices.",
-      image: "/images/flair.jpg",
-      tags: [
-        "Next.js",
-        "React",
-        "Tailwind CSS",
-        "Node.js",
-        "Express",
-        "MongoDB",
-      ],
-      liveUrl: "https://flair-technologies-bice.vercel.app/",
-      githubUrl: "https://github.com/Akash-Harale/flair-technologies",
-    },
-    {
-      title: "Shop Now : E-Commerce Promotional Website",
-      description:
-        "A modern promotional website designed to showcase products, highlight seasonal offers, and drive customer engagement. Features include dynamic product showcases, promotional banners, responsive design, smooth animations, and integrated call-to-action sections for boosting sales conversions.",
-      image: "/images/ecommerce.jpg",
-      tags: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-      liveUrl: "https://ecommerce-promotion.vercel.app/",
-      githubUrl: "https://github.com/Akash-Harale/ecommerce-promotion",
-    },
-    {
-      title: "Relaxing Touch Massage",
-      description:
-        "A beautifully designed website for booking professional massage services, featuring an intuitive service selection, appointment scheduling, user authentication, and a smooth, relaxing user experience.",
-      image: "/images/body-massage.png",
-      tags: ["React", "Node.js", "Express", "MongoDB", "Redux", "Stripe"],
-      liveUrl: "https://spa-pink-theta.vercel.app/",
-      githubUrl: "https://github.com/Akash-Harale/spa",
-    },
-
-    {
-      title: "Task Management App - Backend",
-      description:
-        "A collaborative task management application with real-time updates, task assignment, and progress tracking.",
-      image: "/images/task-manager.jpg",
-      tags: [
-        "Next.js",
-        "React.js",
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "Tailwind CSS",
-      ],
-      githubUrl: "https://github.com/Akash-Harale/todo",
-    },
-    {
-      title: "URL Shortener - Backend",
-      description:
-        "A simple URL shortening service that allows users to shorten long URLs and track click statistics.",
-      image: "/images/url-shortner.png",
-      tags: ["React", "Node.js", "MongoDB", "Material UI"],
-      githubUrl: "https://github.com/Akash-Harale/Backend-of-URL-Shortner",
-    },
-    {
-      title: "Roll Dice App - Android Application ( Flutter )",
-      description:
-        " A simple Flutter app that simulates rolling dice with animations and sound effects.",
-      image: "/images/roll-dice.jpg",
-      tags: ["FLutter", "Dart", "Animation"],
-      githubUrl: "https://github.com/Akash-Harale/flutter_roll_dice_app",
+        "A cross-platform mobile application that allows users to practice multiple-choice questions across various subjects. Built with a focus on performance and intuitive user experience.",
+      image: "/images/flair.jpg", // Reusing flair image or using a placeholder
+      tags: ["Flutter", "Dart", "Mobile UI", "State Management"],
+      githubUrl: "",
+      featured: false,
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   return (
-    <section
-      id="projects"
-      ref={ref}
-      className="py-20 bg-muted/30 dark:bg-slate-900/50"
-    >
-      <div className="container px-4 mx-auto">
-        <div className="flex flex-col items-center mb-12 text-center">
+    <section id="projects" ref={ref} className="py-24 relative overflow-hidden">
+      <div className="container px-4 mx-auto relative z-10">
+        <div className="flex flex-col items-center mb-16 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-4xl font-bold tracking-tight sm:text-5xl font-display"
           >
-            My Projects
+            Featured <span className="text-gradient">Projects</span>
           </motion.h2>
-          <div className="w-20 h-1 mt-2 bg-indigo-500 dark:bg-indigo-400 rounded-full"></div>
+          <div className="w-24 h-1.5 mt-4 bg-indigo-500 rounded-full"></div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 text-lg text-muted-foreground max-w-2xl"
+            className="mt-6 text-lg text-muted-foreground max-w-2xl"
           >
-            Here are some of my recent projects that showcase my skills and
-            expertise in full-stack development.
+            A collection of my most impactful work, combining clean code with exceptional user experience.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-            >
-              <Card className="overflow-hidden h-full dark:bg-slate-800/50 dark:border-slate-700">
-                <div className="relative h-80 overflow-hidden">
+            <motion.div key={index} variants={cardVariants} className="group relative">
+              <div className="glass rounded-3xl overflow-hidden h-full flex flex-col border-indigo-500/10 hover:border-indigo-500/30 transition-all duration-500">
+                {/* Project Image */}
+                <div className="relative h-64 overflow-hidden">
                   <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent opacity-60"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-indigo-500 text-white shadow-lg">
+                      {project.category}
+                    </span>
+                  </div>
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
-                  <p className="mb-4 text-muted-foreground">
+
+                {/* Project Content */}
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold mb-3 font-display group-hover:text-indigo-500 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-6 line-clamp-3 leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-8 mt-auto">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 text-xs font-medium rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-300"
+                        className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest rounded-md bg-indigo-500/5 border border-indigo-500/10 text-indigo-600 dark:text-indigo-400"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-4">
-                    {project.githubUrl && (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-950/50"
-                        asChild
-                      >
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="w-4 h-4 mr-2" /> Code
-                        </a>
-                      </Button>
-                    )}
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-4">
                     {project.liveUrl && (
                       <Button
                         size="sm"
-                        className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+                        className="rounded-full text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 shadow-md shadow-indigo-500/20 group/btn"
                         asChild
                       >
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          Live Demo <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                         </a>
                       </Button>
                     )}
-                    {!project.githubUrl && !project.liveUrl && project.note && (
-                      <p className="text-sm bg-indigo-100 dark:bg-indigo-600 px-5">
-                        {project.note}
-                      </p>
+                    
+                    {project.githubUrl ? (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full glass hover:bg-indigo-500 hover:text-white transition-all"
+                      >
+                        <Github className="w-5 h-5" />
+                        <span className="sr-only">Source Code</span>
+                      </a>
+                    ) : (
+                      <div className="text-[10px] font-bold text-indigo-500/60 uppercase tracking-widest border border-indigo-500/20 px-3 py-1.5 rounded-full glass">
+                         Confidential Code
+                       </div>
                     )}
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mt-20 text-center"
+        >
           <Button
             size="lg"
             variant="outline"
-            className="border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-950/50"
+            className="rounded-full border-2 border-indigo-600/50 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400/50 dark:text-indigo-400 dark:hover:bg-indigo-950/50 px-10 h-14 text-lg font-display"
             asChild
           >
-            <a
-              href="https://github.com/Akash-Harale"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github className="w-5 h-5 mr-2" /> View More on GitHub
+            <a href="https://github.com/Akash-Harale" target="_blank" rel="noopener noreferrer">
+              View All Repositories <Github className="w-5 h-5 ml-3" />
             </a>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
